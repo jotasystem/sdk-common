@@ -8,7 +8,7 @@
 			<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 			
 			<PackageId>JotaSystem.Sdk.Common</PackageId>
-			<Version>1.0.6</Version>
+			<Version>1.0.7</Version>
 			<Authors>Jota System</Authors>
 			<Company>Jota System</Company>
 			<Product>Jota System SDK Common</Product>
