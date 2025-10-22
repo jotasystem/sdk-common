@@ -28,17 +28,28 @@ jobs:
           echo "packageId=$packageId" >> $GITHUB_OUTPUT
           echo "Detected package: $packageId version $version"
 
-      - name: 3️⃣ Verificar se versão já existe no NuGet
+      - name: 3️⃣ Verificar se versão já existe no NuGet (com retry)
         id: check
         run: |
           package=$(echo "${{ steps.get_version.outputs.packageId }}" | tr '[:upper:]' '[:lower:]')
-          response=$(curl -s "https://api.nuget.org/v3-flatcontainer/${package}/index.json" || echo "")
-          if echo "$response" | grep -q "\"${{ steps.get_version.outputs.version }}\""; then
-            echo "exists=true" >> $GITHUB_OUTPUT
-            echo "Version already exists on NuGet. Skipping publish."
-          else
-            echo "exists=false" >> $GITHUB_OUTPUT
-          fi
+          version=${{ steps.get_version.outputs.version }}
+          max_retries=5
+          delay=15
+      
+          for i in $(seq 1 $max_retries); do
+            echo "🔍 Tentativa $i de $max_retries..."
+            response=$(curl -s "https://api.nuget.org/v3-flatcontainer/${package}/index.json" || echo "")
+            if echo "$response" | grep -q "\"$version\""; then
+              echo "exists=true" >> $GITHUB_OUTPUT
+              echo "🚫 Versão $version já existe no NuGet. Encerrando workflow."
+              exit 0
+            fi
+            echo "⏳ Versão ainda não disponível, aguardando ${delay}s..."
+            sleep $delay
+          done
+
+          echo "exists=false" >> $GITHUB_OUTPUT
+          echo "✅ Versão $version não encontrada, continuando publicação..."
 
       - name: 4️⃣ Setup do .NET
         if: steps.check.outputs.exists == 'false'
@@ -67,7 +78,7 @@ jobs:
         run: |
           if compgen -G "${{ env.ARTIFACTS_PATH }}/*.nupkg" > /dev/null; then
             echo "Publicando pacotes NuGet..."
-            dotnet nuget push "${{ env.ARTIFACTS_PATH }}/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+            dotnet nuget push "${{ env.ARTIFACTS_PATH }}/*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
           else
             echo "Nenhum pacote .nupkg encontrado em ${{ env.ARTIFACTS_PATH }}"
             exit 1
