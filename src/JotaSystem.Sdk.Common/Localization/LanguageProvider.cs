@@ -3,7 +3,7 @@
     public static class LanguageProvider
     {
         // Idioma padrão global do SDK
-        public static Language DefaultLanguage { get; private set; } = Language.Pt;
+        public static Language DefaultLanguage { get; private set; } = Language.PtBr;
 
         public static void SetDefault(Language language)
         {
@@ -18,10 +18,17 @@
         {
             return (language ?? DefaultLanguage) switch
             {
-                Language.En => "en",
-                Language.Es => "es",
-                _ => "pt"
+                Language.EnUs => "en-US",
+                Language.EsEs => "es-ES",
+                _ => "pt-BR"
             };
         }
+    }
+
+    public enum Language
+    {
+        PtBr,   // Português do Brasil
+        EnUs,   // Inglês dos EUA
+        EsEs    // Espanhol da Espanha
     }
 }

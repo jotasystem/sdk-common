@@ -68,5 +68,39 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Number
         {
             Assert.False(10.IsMultipleOf(3));
         }
+
+        [Fact]
+        public void IsPositive_ShouldReturnTrue_ForPositiveNumber()
+        {
+            decimal number = 10m;
+            Assert.True(number.IsPositive());
+        }
+
+        [Fact]
+        public void IsPositive_ShouldReturnFalse_ForZeroOrNegative()
+        {
+            decimal number = 0m;
+            Assert.False(number.IsPositive());
+
+            number = -5m;
+            Assert.False(number.IsPositive());
+        }
+
+        [Fact]
+        public void IsNegative_ShouldReturnTrue_ForNegativeNumber()
+        {
+            decimal number = -10m;
+            Assert.True(number.IsNegative());
+        }
+
+        [Fact]
+        public void IsNegative_ShouldReturnFalse_ForZeroOrPositive()
+        {
+            decimal number = 0m;
+            Assert.False(number.IsNegative());
+
+            number = 5m;
+            Assert.False(number.IsNegative());
+        }
     }
 }

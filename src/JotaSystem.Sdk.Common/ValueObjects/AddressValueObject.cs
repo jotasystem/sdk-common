@@ -1,25 +1,29 @@
-﻿using JotaSystem.Sdk.Common.ValueObjects.Base;
+﻿using JotaSystem.Sdk.Common.Localization;
+using JotaSystem.Sdk.Common.Localization.Messages;
+using JotaSystem.Sdk.Common.ValueObjects.Base;
 using JotaSystem.Sdk.Common.ValueObjects.Exceptions;
 
 namespace JotaSystem.Sdk.Common.ValueObjects
 {
     public class AddressValueObject : ValueObjectBase
     {
-        public string Street { get; private set; }
-        public string Number { get; private set; }
-        public string Neighborhood { get; private set; }
+        public string Street { get; private set; } = string.Empty;
+        public string Number { get; private set; } = string.Empty;
+        public string Neighborhood { get; private set; } = string.Empty;
         public string? Complement { get; private set; }
 
-        public AddressValueObject(string street, string number, string neighborhood, string? complement)
+        protected AddressValueObject() { } // EF Core
+
+        public AddressValueObject(string street, string number, string neighborhood, string? complement, Language? lang = null)
         {
-            if (string.IsNullOrEmpty(street))
-                throw new ValueObjectException("Street não pode ser vazio.");
+            if (string.IsNullOrWhiteSpace(street))
+                throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Street), lang));
 
-            if (string.IsNullOrEmpty(number))
-                throw new ValueObjectException("Number não pode ser vazio.");
+            if (string.IsNullOrWhiteSpace(number))
+                throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Number), lang));
 
-            if (string.IsNullOrEmpty(neighborhood))
-                throw new ValueObjectException("Neighborhood não pode ser vazio.");
+            if (string.IsNullOrWhiteSpace(neighborhood))
+                throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Neighborhood), lang));
 
             Street = street.Trim();
             Number = number.Trim();

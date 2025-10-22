@@ -2,6 +2,7 @@
 {
     public abstract class ValueObjectBase
     {
+        public abstract override string ToString();
         public abstract IEnumerable<object?> GetEqualityComponents();
 
         public override bool Equals(object? obj)

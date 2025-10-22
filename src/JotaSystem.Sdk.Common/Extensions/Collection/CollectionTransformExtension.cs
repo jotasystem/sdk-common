@@ -39,17 +39,22 @@
         /// <summary>
         /// Converte a coleção em dicionário de forma segura, ignorando chaves duplicadas.
         /// </summary>
-        public static Dictionary<TKey, T> ToDictionarySafe<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector)
+        public static Dictionary<TKey, T> ToDictionarySafe<T, TKey>(this IEnumerable<T> source, Func<T, TKey> keySelector) where TKey : notnull
         {
-            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
             var dict = new Dictionary<TKey, T>();
+
             foreach (var item in source)
             {
                 var key = keySelector(item);
-                if (!dict.ContainsKey(key))
-                    dict.Add(key, item);
+                if (key is not null)
+                    dict.TryAdd(key, item);
             }
+
             return dict;
         }
+
     }
 }

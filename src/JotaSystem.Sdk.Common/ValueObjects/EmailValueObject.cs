@@ -12,15 +12,15 @@ namespace JotaSystem.Sdk.Common.ValueObjects
 
         protected EmailValueObject() { } // EF Core
 
-        public EmailValueObject(string value, Language? lang = null)
+        public EmailValueObject(string email, Language? lang = null)
         {
-            if (string.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(email))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Email), lang));
 
-            if (!value.Contains('@') || !value.IsEmail())
+            if (!email.Contains('@') || !email.IsEmail())
                 throw new ValueObjectException(ValidationMessage.InvalidField(nameof(Email), lang));
 
-            Email = value.Trim().ToLowerInvariant();
+            Email = email.Trim().ToLowerInvariant();
         }
 
         public override string ToString() => Email;

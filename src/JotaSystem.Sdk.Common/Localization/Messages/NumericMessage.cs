@@ -5,32 +5,32 @@
         public static string MustBePositive(string fieldName, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
-                Language.En => $"{fieldName} must be positive.",
-                Language.Es => $"{fieldName} debe ser positivo.",
+                Language.EnUs => $"{fieldName} must be positive.",
+                Language.EsEs => $"{fieldName} debe ser positivo.",
                 _ => $"{fieldName} deve ser positivo."
             };
 
         public static string OutOfRange(string fieldName, decimal min, decimal max, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
-                Language.En => $"{fieldName} must be between {min} and {max}.",
-                Language.Es => $"{fieldName} debe estar entre {min} y {max}.",
+                Language.EnUs => $"{fieldName} must be between {min} and {max}.",
+                Language.EsEs => $"{fieldName} debe estar entre {min} y {max}.",
                 _ => $"{fieldName} deve estar entre {min} e {max}."
             };
 
         public static string MustBeGreaterThan(string fieldName, decimal minValue, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
-                Language.En => $"{fieldName} must be greater than {minValue}.",
-                Language.Es => $"{fieldName} debe ser mayor que {minValue}.",
+                Language.EnUs => $"{fieldName} must be greater than {minValue}.",
+                Language.EsEs => $"{fieldName} debe ser mayor que {minValue}.",
                 _ => $"{fieldName} deve ser maior que {minValue}."
             };
 
         public static string MustBeLessThan(string fieldName, decimal maxValue, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
-                Language.En => $"{fieldName} must be less than {maxValue}.",
-                Language.Es => $"{fieldName} debe ser menor que {maxValue}.",
+                Language.EnUs => $"{fieldName} must be less than {maxValue}.",
+                Language.EsEs => $"{fieldName} debe ser menor que {maxValue}.",
                 _ => $"{fieldName} deve ser menor que {maxValue}."
             };
     }

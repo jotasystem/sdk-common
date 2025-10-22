@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using JotaSystem.Sdk.Common.Constants;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace JotaSystem.Sdk.Common.Extensions.String
@@ -33,9 +34,7 @@ namespace JotaSystem.Sdk.Common.Extensions.String
             if (string.IsNullOrWhiteSpace(value))
                 return false;
 
-            return Regex.IsMatch(value,
-                @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
-                RegexOptions.IgnoreCase);
+            return Regex.IsMatch(value, RegexPatterns.Email, RegexOptions.Compiled | RegexOptions.IgnoreCase);
         }
 
         /// <summary>

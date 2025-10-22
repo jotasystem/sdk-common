@@ -43,5 +43,21 @@
         /// </summary>
         public static bool IsMultipleOf(this int value, int other)
             => other != 0 && value % other == 0;
+
+        /// <summary>
+        /// Retorna true se o valor for positivo (> 0)
+        /// </summary>
+        public static bool IsPositive<T>(this T number) where T : struct, IComparable<T>
+        {
+            return number.CompareTo(default) > 0;
+        }
+
+        /// <summary>
+        /// Retorna true se o valor for negativo (< 0)
+        /// </summary>
+        public static bool IsNegative<T>(this T number) where T : struct, IComparable<T>
+        {
+            return number.CompareTo(default) < 0;
+        }
     }
 }

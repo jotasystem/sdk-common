@@ -40,7 +40,7 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Task
         public async System.Threading.Tasks.Task RetryAsync_ShouldThrowAfterAllAttempts()
         {
             await Assert.ThrowsAsync<InvalidOperationException>(async () =>
-            await TaskRetryExtension.RetryAsync(async () => throw new InvalidOperationException(), attempts: 2));
+            await TaskRetryExtension.RetryAsync(() => throw new InvalidOperationException(), attempts: 2));
         }
     }
 }
