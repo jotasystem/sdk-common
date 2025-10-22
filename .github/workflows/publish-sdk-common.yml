@@ -19,12 +19,7 @@ jobs:
       - name: 1️⃣ Checkout do código
         uses: actions/checkout@v4
 
-      - name: 2️⃣ Setup do .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: ${{ env.DOTNET_VERSION }}
-
-      - name: 3️⃣ Capturar versão e PackageId do .csproj
+      - name: 2️⃣ Capturar versão e PackageId do .csproj
         id: get_version
         run: |
           version=$(grep -oP "(?<=<Version>).*?(?=</Version>)" "${{ env.PROJECT_PATH }}" | tr -d ' ')
@@ -33,7 +28,7 @@ jobs:
           echo "packageId=$packageId" >> $GITHUB_OUTPUT
           echo "Detected package: $packageId version $version"
 
-      - name: 4️⃣ Verificar se versão já existe no NuGet
+      - name: 3️⃣ Verificar se versão já existe no NuGet
         id: check
         run: |
           package=$(echo "${{ steps.get_version.outputs.packageId }}" | tr '[:upper:]' '[:lower:]')
@@ -45,13 +40,22 @@ jobs:
             echo "exists=false" >> $GITHUB_OUTPUT
           fi
 
+      - name: 4️⃣ Setup do .NET
+        if: steps.check.outputs.exists == 'false'
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
       - name: 5️⃣ Restaurar dependências
+        if: steps.check.outputs.exists == 'false'
         run: dotnet restore ${{ env.PROJECT_PATH }}
 
       - name: 6️⃣ Executar testes
+        if: steps.check.outputs.exists == 'false'
         run: dotnet test ${{ env.TEST_PROJECT_PATH }} --configuration ${{ env.CONFIGURATION }}
 
       - name: 7️⃣ Build do projeto
+        if: steps.check.outputs.exists == 'false'
         run: dotnet build ${{ env.PROJECT_PATH }} --configuration ${{ env.CONFIGURATION }}
 
       - name: 8️⃣ Pack do projeto (somente se versão não existe)
