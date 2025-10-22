@@ -3,7 +3,7 @@ using JotaSystem.Sdk.Common.Localization.Messages;
 
 namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
 {
-    public class DateMessageTest
+    public class DateMessageTest : IClassFixture<CultureFixture>
     {
         private readonly DateTime _min = new(2024, 1, 1);
         private readonly DateTime _max = new(2024, 12, 31);

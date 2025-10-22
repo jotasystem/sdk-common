@@ -22,7 +22,7 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
             LanguageProvider.SetDefault(Language.EnUs);
 
             // Act
-            var message = RegexMessage.InvalidPattern("Field");
+            var message = RegexMessage.InvalidPattern("Field", Language.EnUs);
 
             // Assert
             Assert.Equal("Field does not match the expected pattern.", message);
