@@ -1,4 +1,4 @@
-# JotaSystem.Sdk
+# JotaSystem.Sdk.Common
 
 Pacote base da **Jota System** contendo funções utilitárias, integrações externas e componentes reutilizáveis para aplicações .NET.
 
