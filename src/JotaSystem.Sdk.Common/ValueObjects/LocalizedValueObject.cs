@@ -25,19 +25,19 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             if (string.IsNullOrWhiteSpace(spanish))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Spanish), lang));
 
-            Portuguese = portuguese;
-            English = english;
-            Spanish = spanish;
+            Portuguese = portuguese.Trim().Normalize();
+            English = english.Trim().Normalize();
+            Spanish = spanish.Trim().Normalize();
         }
 
         public override string ToString()
         {
-            var culture = CultureInfo.CurrentUICulture.Name; // Ex: "pt-BR", "en-US", "es-ES"
+            var culture = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
 
             return culture switch
             {
-                "en-US" => !string.IsNullOrWhiteSpace(English) ? English : Portuguese,
-                "es-ES" => !string.IsNullOrWhiteSpace(Spanish) ? Spanish : Portuguese,
+                "en" => !string.IsNullOrWhiteSpace(English) ? English : Portuguese,
+                "es" => !string.IsNullOrWhiteSpace(Spanish) ? Spanish : Portuguese,
                 _ => Portuguese
             };
         }

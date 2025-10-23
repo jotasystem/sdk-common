@@ -21,10 +21,10 @@ namespace JotaSystem.Sdk.Common.ValueObjects
                 throw new ValueObjectException(NumericMessage.MustBePositive(nameof(Amount), lang));
 
             Amount = amount;
-            Currency = currency;
+            Currency = string.IsNullOrWhiteSpace(currency) ? AppConstants.DefaultCurrency : currency.Trim().ToUpperInvariant();
         }
 
-        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0} {1:F2}", Currency, Amount);
+        public override string ToString() => $"{Currency} {Amount.ToString("F2", CultureInfo.InvariantCulture)}";
 
         public override IEnumerable<object?> GetEqualityComponents()
         {

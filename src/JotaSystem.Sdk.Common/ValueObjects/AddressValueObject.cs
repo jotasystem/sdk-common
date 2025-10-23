@@ -31,7 +31,7 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             Complement = complement;
         }
 
-        public override string ToString() => $"{Street}, {Number}{(!string.IsNullOrEmpty(Complement) ? $" - {Complement}" : null)} - {Neighborhood}";
+        public override string ToString() => $"{Street}, {Number}{(!string.IsNullOrEmpty(Complement) ? $" - {Complement}" : string.Empty)} - {Neighborhood}";
 
         public override IEnumerable<object?> GetEqualityComponents()
         {

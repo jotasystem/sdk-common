@@ -17,14 +17,16 @@ namespace JotaSystem.Sdk.Common.ValueObjects
         {
             if (string.IsNullOrWhiteSpace(firstName))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(FirstName), lang));
+            if (string.IsNullOrWhiteSpace(lastName))
+                throw new ValueObjectException(ValidationMessage.RequiredField(nameof(LastName), lang));
+
+            firstName = firstName.Trim();
+            lastName = lastName.Trim();
 
             if (firstName.Length <= Validation.MinNameLength)
                 throw new ValueObjectException(NumericMessage.MustBeGreaterThan(nameof(FirstName), Validation.MinNameLength, lang));
             if (firstName.Length > Validation.MaxNameLength)
                 throw new ValueObjectException(NumericMessage.MustBeLessThan(nameof(FirstName), Validation.MaxNameLength, lang));
-
-            if (string.IsNullOrWhiteSpace(lastName))
-                throw new ValueObjectException(ValidationMessage.RequiredField(nameof(LastName), lang));
 
             if (lastName.Length <= Validation.MinNameLength)
                 throw new ValueObjectException(NumericMessage.MustBeGreaterThan(nameof(LastName), Validation.MinNameLength, lang));
@@ -35,7 +37,7 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             LastName = lastName;
         }
 
-        public override string ToString() => $"{FirstName.Trim()} {LastName.Trim()}";
+        public override string ToString() => $"{FirstName} {LastName}";
 
         public override IEnumerable<object?> GetEqualityComponents()
         {

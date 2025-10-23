@@ -3,7 +3,7 @@
     public static class Validation
     {
         // 🔹 Comprimentos de campos de texto
-        public const int MaxNameLength = 150;
+        public const int MaxNameLength = 50;
         public const int MinNameLength = 2;
 
         public const int MaxEmailLength = 100;
@@ -52,7 +52,7 @@
         public const decimal MaxLengthCm = 500.0m;
 
         // 🔹 Outros limites úteis
-        public const int MaxPhoneLength = 20;
+        public const int MaxPhoneLength = 12;
         public const int MinPhoneLength = 8;
 
         public const int MaxZipCodeLength = 10;

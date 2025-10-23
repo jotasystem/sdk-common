@@ -18,6 +18,8 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             if (string.IsNullOrWhiteSpace(postalCode))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(PostalCode), lang));
 
+            postalCode = postalCode.Trim();
+
             if (!Regex.IsMatch(postalCode, RegexPatterns.Cep))
                 throw new ValueObjectException(RegexMessage.InvalidPattern(nameof(PostalCode), lang));
 

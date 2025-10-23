@@ -27,7 +27,13 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             Longitude = longitude;
         }
 
-        public override string ToString() => string.Format(CultureInfo.InvariantCulture, "{0:F4}, {1:F4}", Latitude, Longitude);
+        public override string ToString()
+        {
+            if (!Latitude.HasValue || !Longitude.HasValue)
+                return string.Empty;
+
+            return string.Format(CultureInfo.InvariantCulture, "{0:F4}, {1:F4}", Latitude, Longitude);
+        }
 
         public override IEnumerable<object?> GetEqualityComponents()
         {

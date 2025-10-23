@@ -18,7 +18,9 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             if (string.IsNullOrWhiteSpace(password))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Password), lang));
 
-            if (password.Length <= Validation.MinPasswordLength)
+            password = password.Trim();
+
+            if (password.Length < Validation.MinPasswordLength)
                 throw new ValueObjectException(NumericMessage.MustBeGreaterThan(nameof(Password), Validation.MinPasswordLength, lang));
             if (password.Length > Validation.MaxPasswordLength)
                 throw new ValueObjectException(NumericMessage.MustBeLessThan(nameof(Password), Validation.MaxPasswordLength, lang));

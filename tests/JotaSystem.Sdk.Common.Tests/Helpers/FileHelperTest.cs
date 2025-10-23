@@ -61,18 +61,18 @@ namespace JotaSystem.Sdk.Common.Tests.Helpers
         [InlineData(null)]
         [InlineData("")]
         [InlineData("   ")]
-        public void Methods_ShouldThrow_WhenPathIsNullOrWhitespace(string path)
+        public void Methods_ShouldThrow_WhenPathIsNullOrWhitespace(string? path)
         {
-            Assert.Throws<ArgumentException>(() => FileHelper.Exists(path));
-            Assert.Throws<ArgumentException>(() => FileHelper.CreateIfNotExists(path));
-            Assert.Throws<ArgumentException>(() => FileHelper.ReadFile(path));
-            Assert.Throws<ArgumentException>(() => FileHelper.WriteFile(path, "test"));
+            Assert.Throws<ArgumentException>(() => FileHelper.Exists(path!));
+            Assert.Throws<ArgumentException>(() => FileHelper.CreateIfNotExists(path!));
+            Assert.Throws<ArgumentException>(() => FileHelper.ReadFile(path!));
+            Assert.Throws<ArgumentException>(() => FileHelper.WriteFile(path!, "test"));
         }
 
         [Fact]
         public void WriteFile_ShouldHandleNullContent()
         {
-            FileHelper.WriteFile(_tempFile, null);
+            FileHelper.WriteFile(_tempFile, null!);
             var content = File.ReadAllText(_tempFile);
             Assert.Equal(string.Empty, content);
         }

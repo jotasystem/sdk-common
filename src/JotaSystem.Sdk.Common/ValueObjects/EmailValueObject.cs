@@ -17,10 +17,12 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             if (string.IsNullOrWhiteSpace(email))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Email), lang));
 
-            if (!email.Contains('@') || !email.IsEmail())
+            email = email.Trim().Normalize().ToLowerInvariant();
+
+            if (!email.IsEmail())
                 throw new ValueObjectException(ValidationMessage.InvalidField(nameof(Email), lang));
 
-            Email = email.Trim().ToLowerInvariant();
+            Email = email;
         }
 
         public override string ToString() => Email;

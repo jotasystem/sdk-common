@@ -45,9 +45,9 @@ namespace JotaSystem.Sdk.Common.Tests.Helpers
         [InlineData("Aa1!", false)]         // menos de 8 caracteres
         [InlineData("NoNumber!", false)]    // sem número
         [InlineData("nonumbers1", false)]   // sem maiúscula e sem caractere especial
-        public void IsStrong_ShouldValidatePasswordStrength(string password, bool expected)
+        public void IsStrong_ShouldValidatePasswordStrength(string? password, bool expected)
         {
-            var result = PasswordHelper.IsStrong(password);
+            var result = PasswordHelper.IsStrong(password!);
             Assert.Equal(expected, result);
         }
     }

@@ -27,7 +27,7 @@ namespace JotaSystem.Sdk.Common.ValueObjects
             if (string.IsNullOrWhiteSpace(number))
                 throw new ValueObjectException(ValidationMessage.RequiredField(nameof(Number), lang));
 
-            number = number.OnlyNumbers();
+            number = number.Trim().OnlyNumbers();
 
             if (number.Length < Validation.MinPhoneLength)
                 throw new ValueObjectException(NumericMessage.MustBeGreaterThan(nameof(Number), Validation.MinPhoneLength, lang));

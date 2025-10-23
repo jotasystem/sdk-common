@@ -28,7 +28,7 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Task
             {
                 attempt++;
                 if (attempt < 2) throw new InvalidOperationException();
-                return 99;
+                return await System.Threading.Tasks.Task.FromResult(99);
             }, attempts: 3);
 
 
