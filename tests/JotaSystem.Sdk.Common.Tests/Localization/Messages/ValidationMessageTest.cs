@@ -38,6 +38,28 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
         }
 
         [Theory]
+        [InlineData(Language.PtBr, "Código deve ter no mínimo 3 caracteres.")]
+        [InlineData(Language.EnUs, "Code must at minimum 3 characters.")]
+        [InlineData(Language.EsEs, "Código debe tener al menos 3 caracteres.")]
+        public void MinLength_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var field = lang == Language.EsEs ? "Código" : lang == Language.EnUs ? "Code" : "Código";
+            var message = ValidationMessage.MinLength(field, 3, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Código deve ter no máximo 10 caracteres.")]
+        [InlineData(Language.EnUs, "Code must at maximum 10 characters.")]
+        [InlineData(Language.EsEs, "Código debe tener al máximo 10 caracteres.")]
+        public void MaxLength_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var field = lang == Language.EsEs ? "Código" : lang == Language.EnUs ? "Code" : "Código";
+            var message = ValidationMessage.MaxLength(field, 10, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
         [InlineData(Language.PtBr, "Código deve ter 6 caracteres.")]
         [InlineData(Language.EnUs, "Code must have 6 characters.")]
         [InlineData(Language.EsEs, "Código debe tener 6 caracteres.")]

@@ -26,6 +26,22 @@
                 _ => $"{fieldName} possui um formato inválido."
             };
 
+        public static string MinLength(string fieldName, int minlength, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} must at minimum {minlength} characters.",
+                Language.EsEs => $"{fieldName} debe tener al menos {minlength} caracteres.",
+                _ => $"{fieldName} deve ter no mínimo {minlength} caracteres."
+            };
+
+        public static string MaxLength(string fieldName, int maxlength, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} must at maximum {maxlength} characters.",
+                Language.EsEs => $"{fieldName} debe tener al máximo {maxlength} caracteres.",
+                _ => $"{fieldName} deve ter no máximo {maxlength} caracteres."
+            };
+
         public static string InvalidLength(string fieldName, int expectedLength, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
