@@ -16,6 +16,27 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
         }
 
         [Theory]
+        [InlineData(Language.PtBr, "Nome é obrigatório.")]
+        [InlineData(Language.EnUs, "Name is required.")]
+        [InlineData(Language.EsEs, "Nombre es obligatorio.")]
+        public void IsRequired_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            // Arrange
+            var fieldName = lang switch
+            {
+                Language.EnUs => "Name",
+                Language.EsEs => "Nombre",
+                _ => "Nome"
+            };
+
+            // Act
+            var message = ValidationMessage.IsRequired(fieldName, lang);
+
+            // Assert
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
         [InlineData(Language.PtBr, "Email é inválido.")]
         [InlineData(Language.EnUs, "Email is invalid.")]
         [InlineData(Language.EsEs, "Correo es inválido.")]

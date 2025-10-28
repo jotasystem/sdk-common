@@ -33,5 +33,13 @@
                 Language.EsEs => $"{fieldName} debe ser menor que {maxValue}.",
                 _ => $"{fieldName} deve ser menor que {maxValue}."
             };
+
+        public static string NotEnough(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} is not enough.",
+                Language.EsEs => $"{fieldName} no es suficiente.",
+                _ => $"{fieldName} não é suficiente."
+            };
     }
 }

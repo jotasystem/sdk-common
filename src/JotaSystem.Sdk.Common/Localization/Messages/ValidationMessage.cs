@@ -10,6 +10,14 @@
                 _ => $"{fieldName} não pode ser vazio."
             };
 
+        public static string IsRequired(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} is required.",
+                Language.EsEs => $"{fieldName} es obligatorio.",
+                _ => $"{fieldName} é obrigatório."
+            };
+
         public static string InvalidField(string fieldName, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {

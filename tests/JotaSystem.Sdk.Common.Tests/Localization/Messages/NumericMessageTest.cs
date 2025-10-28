@@ -55,5 +55,23 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
             // Reset para não afetar outros testes
             LanguageProvider.SetDefault(Language.PtBr);
         }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Saldo não é suficiente.")]
+        [InlineData(Language.EnUs, "Balance is not enough.")]
+        [InlineData(Language.EsEs, "Saldo no es suficiente.")]
+        public void NotEnough_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var fieldName = lang switch
+            {
+                Language.EnUs => "Balance",
+                _ => "Saldo"
+            };
+
+            var message = NumericMessage.NotEnough(fieldName, lang);
+
+            Assert.Equal(expected, message);
+        }
+
     }
 }
