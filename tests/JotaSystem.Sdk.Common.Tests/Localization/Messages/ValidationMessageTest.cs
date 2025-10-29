@@ -102,6 +102,17 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
             Assert.Equal(expected, message);
         }
 
+        [Theory]
+        [InlineData(Language.PtBr, "Usuário já existe.")]
+        [InlineData(Language.EnUs, "User already exists.")]
+        [InlineData(Language.EsEs, "Usuario ya existe.")]
+        public void AlreadyExists_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var field = lang == Language.EsEs ? "Usuario" : lang == Language.EnUs ? "User" : "Usuário";
+            var message = ValidationMessage.AlreadyExists(field, lang);
+            Assert.Equal(expected, message);
+        }
+
         [Fact]
         public void RequiredField_ShouldUseDefaultLanguage_WhenNull()
         {
