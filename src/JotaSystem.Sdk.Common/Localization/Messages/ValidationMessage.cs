@@ -65,5 +65,13 @@
                 Language.EsEs => $"{fieldName} debe tener entre {minLength} y {maxLength} caracteres.",
                 _ => $"{fieldName} deve ter entre {minLength} e {maxLength} caracteres."
             };
+
+        public static string AlreadyExists(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} already exists.",
+                Language.EsEs => $"{fieldName} ya existe.",
+                _ => $"{fieldName} já existe."
+            };
     }
 }
