@@ -8,7 +8,7 @@
 			<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 			
 			<PackageId>JotaSystem.Sdk.Common</PackageId>
-			<Version>1.0.10</Version>
+			<Version>1.0.11</Version>
 			<Authors>Jota System</Authors>
 			<Company>Jota System</Company>
 			<Product>Jota System SDK Common</Product>
@@ -22,10 +22,6 @@
 			<PackageReadmeFile>README.md</PackageReadmeFile>
 			<PackAsTool>False</PackAsTool>
 		</PropertyGroup>
-
-		<ItemGroup>
-		  <None Remove="ValueObjects\EmailValueObject.cs~RF14ac7de.TMP" />
-		</ItemGroup>
 
 		<ItemGroup>
 		  <None Include="..\..\icon.png">
