@@ -70,6 +70,23 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Number
         }
 
         [Fact]
+        public void IsZero_ShouldReturnTrue_ForZeroNumber()
+        {
+            decimal number = 0m;
+            Assert.True(number.IsZero());
+        }
+
+        [Fact]
+        public void IsZero_ShouldReturnFalse_ForNegativeOrPositive()
+        {
+            decimal number = 5m;
+            Assert.False(number.IsZero());
+
+            number = -5m;
+            Assert.False(number.IsZero());
+        }
+
+        [Fact]
         public void IsPositive_ShouldReturnTrue_ForPositiveNumber()
         {
             decimal number = 10m;

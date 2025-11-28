@@ -45,6 +45,14 @@
             => other != 0 && value % other == 0;
 
         /// <summary>
+        /// Retorna true se o valor for zero (= 0)
+        /// </summary>
+        public static bool IsZero<T>(this T number) where T : struct, IComparable<T>
+        {
+            return number.CompareTo(default) == 0;
+        }
+
+        /// <summary>
         /// Retorna true se o valor for positivo (> 0)
         /// </summary>
         public static bool IsPositive<T>(this T number) where T : struct, IComparable<T>
