@@ -34,7 +34,7 @@ namespace JotaSystem.Sdk.Common.Extensions.String
             if (string.IsNullOrWhiteSpace(value))
                 return false;
 
-            return Regex.IsMatch(value, RegexPatterns.Email, RegexOptions.Compiled | RegexOptions.IgnoreCase);
+            return Regex.IsMatch(value, RegexPatternsConstant.Email, RegexOptions.Compiled | RegexOptions.IgnoreCase);
         }
 
         /// <summary>

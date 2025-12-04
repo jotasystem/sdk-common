@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Common.Constants
 {
-    public static class Validation
+    public static class ValidationConstant
     {
         // 🔹 Comprimentos de campos de texto
         public const int MaxNameLength = 50;

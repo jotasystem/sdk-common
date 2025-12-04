@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Common.Constants
 {
-    public static class StatusCodes
+    public static class StatusCodesConstant
     {
         // 🔹 HTTP Status Codes
         public static class Http

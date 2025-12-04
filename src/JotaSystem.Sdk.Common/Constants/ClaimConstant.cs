@@ -1,0 +1,28 @@
+﻿namespace JotaSystem.Sdk.Common.Constants
+{
+    public static class ClaimConstant
+    {
+        // 🔹 Chaves de Claims
+        public const string UserId = "uid";
+        public const string TenantId = "tenant_id";
+        public const string CompanyId = "company_id";
+        public const string UserName = "username";
+        public const string FullName = "full_name";
+        public const string Email = "email";
+        public const string Roles = "roles";
+        public const string Permissions = "permissions";
+        public const string Culture = "culture";
+        public const string TimeZone = "timezone";
+        public const string IsAdmin = "is_admin";
+
+        // 🔹 Valores padrão (opcional)
+        public static class Defaults
+        {
+            public const string Culture = "pt-BR";
+            public const string TimeZone = "America/Sao_Paulo";
+            public const string Role = "User";
+            public const string Permissions = "";
+            public const bool IsAdmin = false;
+        }
+    }
+}

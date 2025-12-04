@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Common.Constants
 {
-    public static class DateTimeFormats
+    public static class DateTimeFormatsConstant
     {
         // 🔹 Datas
         public const string ShortDate = "dd/MM/yyyy";               // 22/10/2025

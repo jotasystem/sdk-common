@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Common.Constants
 {
-    public static class RegexPatterns
+    public static class RegexPatternsConstant
     {
         // 🔹 E-mail
         public const string Email = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";

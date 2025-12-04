@@ -1,6 +1,6 @@
 ﻿namespace JotaSystem.Sdk.Common.Constants
 {
-    public static class AppConstants
+    public static class AppConstant
     {
         // 🔹 Informações da aplicação
         public const string ApplicationName = "JotaSystemApp";
