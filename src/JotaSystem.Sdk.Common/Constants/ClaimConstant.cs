@@ -9,6 +9,7 @@
         public const string UserName = "username";
         public const string FullName = "full_name";
         public const string Email = "email";
+        public const string Profile = "profile";
         public const string Roles = "roles";
         public const string Permissions = "permissions";
         public const string Culture = "culture";
