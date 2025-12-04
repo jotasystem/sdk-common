@@ -16,6 +16,7 @@
         public const string Permissions = "permissions";
         public const string Culture = "culture";
         public const string TimeZone = "timezone";
+        public const string Currency = "currency";
         public const string IsAdmin = "is_admin";
     }
 }
