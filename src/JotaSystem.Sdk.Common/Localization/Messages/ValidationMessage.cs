@@ -58,6 +58,14 @@
                 _ => $"{fieldName} deve ter {expectedLength} caracteres."
             };
 
+        public static string OutOfRange(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} is out of range.",
+                Language.EsEs => $"{fieldName} está fuera de rango.",
+                _ => $"{fieldName} está fora do intervalo permitido."
+            };
+
         public static string LengthOutOfRange(string fieldName, int minLength, int maxLength, Language? lang = null) =>
             LanguageProvider.Use(lang) switch
             {
@@ -72,6 +80,46 @@
                 Language.EnUs => $"{fieldName} already exists.",
                 Language.EsEs => $"{fieldName} ya existe.",
                 _ => $"{fieldName} já existe."
+            };
+
+        public static string NotFound(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"{fieldName} not found.",
+                Language.EsEs => $"{fieldName} no encontrado.",
+                _ => $"{fieldName} não encontrado."
+            };
+
+        public static string Unauthorized(Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"Unauthorized access.",
+                Language.EsEs => $"Acceso no autorizado.",
+                _ => $"Acesso não autorizado."
+            };
+
+        public static string Forbidden(Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"Access is forbidden.",
+                Language.EsEs => $"Acceso prohibido.",
+                _ => $"Acesso proibido."
+            };
+
+        public static string Conflict(string fieldName, Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"Conflict with {fieldName}.",
+                Language.EsEs => $"Conflicto con {fieldName}.",
+                _ => $"Conflito com {fieldName}."
+            };
+
+        public static string OperationFailed(Language? lang = null) =>
+            LanguageProvider.Use(lang) switch
+            {
+                Language.EnUs => $"Operation failed.",
+                Language.EsEs => $"La operación falló.",
+                _ => $"A operação falhou."
             };
     }
 }

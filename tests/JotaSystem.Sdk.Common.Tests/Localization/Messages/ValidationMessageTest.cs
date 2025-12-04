@@ -92,6 +92,17 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
         }
 
         [Theory]
+        [InlineData(Language.PtBr, "Usuário está fora do intervalo permitido.")]
+        [InlineData(Language.EnUs, "User is out of range.")]
+        [InlineData(Language.EsEs, "Usuario está fuera de rango.")]
+        public void OutOfRange_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var field = lang == Language.EsEs ? "Usuario" : lang == Language.EnUs ? "User" : "Usuário";
+            var message = ValidationMessage.OutOfRange(field, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
         [InlineData(Language.PtBr, "Usuário deve ter entre 3 e 10 caracteres.")]
         [InlineData(Language.EnUs, "User must have between 3 and 10 characters.")]
         [InlineData(Language.EsEs, "Usuario debe tener entre 3 y 10 caracteres.")]
@@ -110,6 +121,64 @@ namespace JotaSystem.Sdk.Common.Tests.Localization.Messages
         {
             var field = lang == Language.EsEs ? "Usuario" : lang == Language.EnUs ? "User" : "Usuário";
             var message = ValidationMessage.AlreadyExists(field, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Usuário não encontrado.")]
+        [InlineData(Language.EnUs, "User not found.")]
+        [InlineData(Language.EsEs, "Usuario no encontrado.")]
+        public void NotFound_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var field = lang == Language.EsEs ? "Usuario" : lang == Language.EnUs ? "User" : "Usuário";
+            var message = ValidationMessage.NotFound(field, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Acesso não autorizado.")]
+        [InlineData(Language.EnUs, "Unauthorized access.")]
+        [InlineData(Language.EsEs, "Acceso no autorizado.")]
+        public void Unauthorized_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var message = ValidationMessage.Unauthorized(lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Acesso proibido.")]
+        [InlineData(Language.EnUs, "Access is forbidden.")]
+        [InlineData(Language.EsEs, "Acceso prohibido.")]
+        public void Forbidden_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var message = ValidationMessage.Forbidden(lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "Pedido")]
+        [InlineData(Language.EnUs, "Order")]
+        [InlineData(Language.EsEs, "Pedido")]
+        public void Conflict_ShouldReturnLocalizedMessage(Language lang, string field)
+        {
+            var expected = lang switch
+            {
+                Language.EnUs => $"Conflict with {field}.",
+                Language.EsEs => $"Conflicto con {field}.",
+                _ => $"Conflito com {field}."
+            };
+
+            var message = ValidationMessage.Conflict(field, lang);
+            Assert.Equal(expected, message);
+        }
+
+        [Theory]
+        [InlineData(Language.PtBr, "A operação falhou.")]
+        [InlineData(Language.EnUs, "Operation failed.")]
+        [InlineData(Language.EsEs, "La operación falló.")]
+        public void OperationFailed_ShouldReturnLocalizedMessage(Language lang, string expected)
+        {
+            var message = ValidationMessage.OperationFailed(lang);
             Assert.Equal(expected, message);
         }
 
