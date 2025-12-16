@@ -73,5 +73,29 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
             // Assert
             Assert.Equal("103, 80, 164", result);
         }
+
+        [Fact]
+        public void ToCssRgb_ShouldConvertHex()
+        {
+            Assert.Equal("240, 241, 247", "#F0F1F7".ToCssRgb());
+        }
+
+        [Fact]
+        public void ToCssRgb_ShouldConvertRgb()
+        {
+            Assert.Equal("240, 241, 247", "rgb(240, 241, 247)".ToCssRgb());
+        }
+
+        [Fact]
+        public void ToCssRgb_ShouldConvertRgba()
+        {
+            Assert.Equal("240, 241, 247", "rgba(240, 241, 247, 1)".ToCssRgb());
+        }
+
+        [Fact]
+        public void ToCssRgb_ShouldReturnOriginal_WhenInvalid()
+        {
+            Assert.Equal("abc", "abc".ToCssRgb());
+        }
     }
 }

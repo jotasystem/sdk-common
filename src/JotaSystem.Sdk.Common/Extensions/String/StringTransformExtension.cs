@@ -133,5 +133,44 @@ namespace JotaSystem.Sdk.Common.Extensions.String
 
             return $"{r}, {g}, {b}";
         }
+
+        /// <summary>
+        /// Converte uma cor HEX, rgb() ou rgba() para o formato CSS RGB: "r, g, b".
+        /// </summary>
+        public static string ToCssRgb(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+
+            value = value.Trim();
+
+            // HEX (#RRGGBB)
+            if (value.StartsWith("#"))
+            {
+                var hex = value.Replace("#", "");
+
+                if (hex.Length != 6)
+                    return value;
+
+                if (!int.TryParse(hex[..2], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var r) ||
+                    !int.TryParse(hex.AsSpan(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var g) ||
+                    !int.TryParse(hex.AsSpan(4, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var b))
+                    return value;
+
+                return $"{r}, {g}, {b}";
+            }
+
+            // rgb(...) ou rgba(...)
+            if (value.StartsWith("rgb", StringComparison.OrdinalIgnoreCase))
+            {
+                var match = Regex.Match(value, @"rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)");
+                if (!match.Success)
+                    return value;
+
+                return $"{match.Groups[1].Value}, {match.Groups[2].Value}, {match.Groups[3].Value}";
+            }
+
+            return value;
+        }
     }
 }
