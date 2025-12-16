@@ -60,5 +60,18 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
         {
             Assert.Equal("odnuM aloH", "Hola Mundo".ReverseString());
         }
+
+        [Fact]
+        public void ToRgb_ShouldConvertHexToRgb()
+        {
+            // Arrange
+            var hex = "#6750A4";
+
+            // Act
+            var result = hex.ToRgb();
+
+            // Assert
+            Assert.Equal("103, 80, 164", result);
+        }
     }
 }

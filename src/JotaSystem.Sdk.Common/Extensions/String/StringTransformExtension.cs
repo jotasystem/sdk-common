@@ -112,5 +112,26 @@ namespace JotaSystem.Sdk.Common.Extensions.String
             Array.Reverse(array);
             return new string(array);
         }
+
+        /// <summary>
+        /// Converte uma cor hexadecimal (#RRGGBB ou RRGGBB) para o formato RGB ("r, g, b").
+        /// </summary>
+        public static string ToRgb(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+
+            value = value.Trim().Replace("#", "");
+
+            if (value.Length != 6)
+                return value;
+
+            if (!int.TryParse(value[..2], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var r) ||
+                !int.TryParse(value.AsSpan(2, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var g) ||
+                !int.TryParse(value.AsSpan(4, 2), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var b))
+                return value;
+
+            return $"{r}, {g}, {b}";
+        }
     }
 }
