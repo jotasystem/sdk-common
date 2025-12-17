@@ -9,7 +9,7 @@
         public const string Username = "username";
         public const string Nickname = "nickname";
         public const string Name = "name";
-        public const string Email = "email";
+        public const string Email = "email_address";
         public const string PhoneNumber = "phone_number";
         public const string Picture = "picture";
         public const string Profile = "profile";
