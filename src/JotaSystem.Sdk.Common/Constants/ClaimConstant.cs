@@ -6,8 +6,9 @@
         public const string UserId = "uid";
         public const string TenantId = "tenant_id";
         public const string CompanyId = "company_id";
-        public const string UserName = "username";
-        public const string FullName = "full_name";
+        public const string Username = "username";
+        public const string Nickname = "nickname";
+        public const string Name = "name";
         public const string Email = "email";
         public const string PhoneNumber = "phone_number";
         public const string Picture = "picture";
