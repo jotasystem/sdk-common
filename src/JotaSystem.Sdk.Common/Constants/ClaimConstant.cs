@@ -5,6 +5,8 @@
         // 🔹 Chaves de Claims
         public const string UserId = "uid";
         public const string TenantId = "tenant_id";
+        public const string TenantLogo = "tenant_logo";
+        public const string TenantColor = "tenant_color";
         public const string CompanyId = "company_id";
         public const string Username = "username";
         public const string Nickname = "nickname";

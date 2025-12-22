@@ -6,6 +6,7 @@
         public const string ApplicationName = "JotaSystemApp";
         public const string DefaultLanguage = "pt-BR";
         public const string DefaultCulture = "pt-BR";
+        public const string DefaultColorHex = "#ff4a2f";
 
         // 🔹 Tentativas / timeouts
         public const int MaxRetryAttempts = 3;
