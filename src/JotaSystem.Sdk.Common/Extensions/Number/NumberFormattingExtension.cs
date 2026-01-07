@@ -46,9 +46,19 @@ namespace JotaSystem.Sdk.Common.Extensions.Number
         /// <summary>
         /// Retorna uma string formatada com o percentual (ex: 10.50%).
         /// </summary>
-        public static string ToPercentStringFrom(this decimal value, decimal percent, int decimals = 2, string culture = "pt-BR")
+        public static string ToPercent(this decimal value, int decimals = 2, string culture = "pt-BR")
         {
-            return percent.ToString($"F{decimals}", CultureInfo.GetCultureInfo(culture)) + "%";
+            return value.ToString($"F{decimals}", CultureInfo.GetCultureInfo(culture)) + "%";
+        }
+
+        /// <summary>
+        /// Retorna uma string percentual formatada com sinal explícito (+ ou -).
+        /// </summary>
+        public static string ToPercentWithSign(this decimal value, int decimals = 2, string culture = "pt-BR")
+        {
+            var cultureInfo = CultureInfo.GetCultureInfo(culture);
+            var format = $"+0.{new string('0', decimals)};-0.{new string('0', decimals)}";
+            return value.ToString(format, cultureInfo) + "%";
         }
 
         /// <summary>
