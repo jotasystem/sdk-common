@@ -57,6 +57,12 @@ namespace JotaSystem.Sdk.Common.Extensions.Number
         public static string ToPercentWithSign(this decimal value, int decimals = 2, string culture = "pt-BR")
         {
             var cultureInfo = CultureInfo.GetCultureInfo(culture);
+
+            if (value == 0)
+            {
+                return value.ToString($"F{decimals}", cultureInfo) + "%";
+            }
+
             var format = $"+0.{new string('0', decimals)};-0.{new string('0', decimals)}";
             return value.ToString(format, cultureInfo) + "%";
         }
