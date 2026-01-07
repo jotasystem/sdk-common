@@ -11,12 +11,36 @@ namespace JotaSystem.Sdk.Common.Extensions.Number
             => string.Format(new CultureInfo(culture ?? "pt-BR"), "{0:C}", value);
 
         /// <summary>
+        /// Retorna uma string formatada no padrão monetário da cultura informada, exibindo o sinal (+ e -).
+        /// </summary>
+        public static string ToCurrencyWithSign(this decimal value, string? culture = "pt-BR")
+        {
+            var cultureInfo = new CultureInfo(culture ?? "pt-BR");
+            var sign = value > 0 ? "+" : value < 0 ? "-" : string.Empty;
+            var formattedValue = Math.Abs(value).ToString("C", cultureInfo);
+            return $"{sign} {formattedValue}";
+        }
+
+        /// <summary>
         /// Retorna uma string formatada com separadores de milhar e casas decimais.
         /// </summary>
         public static string ToFormattedString(this double value, int decimalPlaces = 2, string? culture = "pt-BR")
         {
             var format = "N" + decimalPlaces;
             return value.ToString(format, new CultureInfo(culture ?? "pt-BR"));
+        }
+
+        /// <summary>
+        /// Retorna uma string formatada com separadores de milhar e casas decimais, exibindo o sinal (+ e -).
+        /// </summary>
+        public static string ToFormattedStringWithSign( this double value, int decimalPlaces = 2, string? culture = "pt-BR")
+        {
+            var cultureInfo = new CultureInfo(culture ?? "pt-BR");
+            var format = "N" + decimalPlaces;
+            var sign = value > 0 ? "+" : value < 0 ? "-" : string.Empty;
+
+            var formattedValue = Math.Abs(value).ToString(format, cultureInfo);
+            return $"{sign}{formattedValue}";
         }
 
         /// <summary>
