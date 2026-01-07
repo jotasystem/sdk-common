@@ -18,6 +18,19 @@ namespace JotaSystem.Sdk.Common.Extensions.Number
         }
 
         /// <summary>
+        /// Retorna o percentual que o valor representa em relação ao total.
+        /// Evita divisão por zero.
+        /// Exemplo: 20.PercentFrom(200) => 10
+        /// </summary>
+        public static decimal PercentFrom(this decimal value, decimal total)
+        {
+            if (total <= 0)
+                return 0;
+
+            return (value / total) * 100m;
+        }
+
+        /// <summary>
         /// Retorna o valor percentual com base em um total.
         /// Exemplo: 50.PercentOf(200) => 100
         /// </summary>

@@ -44,6 +44,14 @@ namespace JotaSystem.Sdk.Common.Extensions.Number
         }
 
         /// <summary>
+        /// Retorna uma string formatada com o percentual (ex: 10.50%).
+        /// </summary>
+        public static string ToPercentStringFrom(this decimal value, decimal percent, int decimals = 2, string culture = "pt-BR")
+        {
+            return percent.ToString($"F{decimals}", CultureInfo.GetCultureInfo(culture)) + "%";
+        }
+
+        /// <summary>
         /// Retorna a representação ordinal do número (exemplo: 1º, 2º, 3º...).
         /// </summary>
         public static string ToOrdinal(this int value)
