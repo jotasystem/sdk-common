@@ -1,4 +1,7 @@
-﻿namespace JotaSystem.Sdk.Common.Extensions.Enum
+﻿using System.ComponentModel.DataAnnotations;
+using System.Reflection;
+
+namespace JotaSystem.Sdk.Common.Extensions.Enum
 {
     /// <summary>
     /// Extensões para conversão de enums, incluindo parse seguro e listagem de valores.
@@ -23,6 +26,40 @@
                 return result;
 
             throw new ArgumentException($"O valor '{value}' não é válido para o enum {typeof(TEnum).Name}.");
+        }
+
+        /// <summary>
+        /// Converte uma string correspondente ao Display de um enum para o valor do enum especificado.
+        /// </summary>
+        /// <typeparam name="TEnum">Tipo do enum.</typeparam>
+        /// <param name="displayName">Texto definido no atributo</param>
+        /// <param name="ignoreCase">Define se a conversão deve ignorar maiúsculas/minúsculas.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static TEnum FromDisplayName<TEnum>(this string displayName, bool ignoreCase = true)
+            where TEnum : struct, System.Enum
+        {
+            if (string.IsNullOrWhiteSpace(displayName))
+                throw new ArgumentException("Valor inválido.", nameof(displayName));
+
+            var comparison = ignoreCase
+                ? StringComparison.OrdinalIgnoreCase
+                : StringComparison.Ordinal;
+
+            foreach (var field in typeof(TEnum).GetFields(BindingFlags.Public | BindingFlags.Static))
+            {
+                var displayAttribute = field.GetCustomAttribute<DisplayAttribute>();
+
+                if (displayAttribute?.Name != null &&
+                    string.Equals(displayAttribute.Name, displayName, comparison))
+                {
+                    return (TEnum)field.GetValue(null)!;
+                }
+            }
+
+            throw new ArgumentException(
+                $"O valor '{displayName}' não corresponde a nenhum DisplayName do enum {typeof(TEnum).Name}."
+            );
         }
 
         /// <summary>

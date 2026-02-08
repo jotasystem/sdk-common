@@ -1,4 +1,5 @@
 ﻿using JotaSystem.Sdk.Common.Extensions.Enum;
+using System.ComponentModel.DataAnnotations;
 
 namespace JotaSystem.Sdk.Common.Tests.Extensions.Enum
 {
@@ -6,6 +7,7 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Enum
     {
         private enum TestEnum
         {
+            [Display(Name = "Teste 1")]
             Value1 = 1,
             Value2 = 2
         }
@@ -21,6 +23,12 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.Enum
         public void ToEnum_ShouldThrow_OnInvalidString()
         {
             Assert.Throws<ArgumentException>(() => "Invalid".ToEnum<TestEnum>());
+        }
+
+        [Fact]
+        public void FromDisplayName_ShouldParseValidString()
+        {
+            Assert.Equal(TestEnum.Value1, "Teste 1".FromDisplayName<TestEnum>());
         }
 
         [Fact]
