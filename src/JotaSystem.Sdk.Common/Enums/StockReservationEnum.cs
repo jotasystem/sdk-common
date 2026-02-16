@@ -2,11 +2,11 @@
 
 namespace JotaSystem.Sdk.Common.Enums
 {
-    public enum ReservationStatus
+    public enum StockReservationEnum
     {
         [Display(Name = "Ativo")]
         Active = 1,
-        [Display(Name = "Lançado")]
+        [Display(Name = "Liberado")]
         Released = 2,
         [Display(Name = "Consumido")]
         Consumed = 3

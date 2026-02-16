@@ -8,17 +8,13 @@ namespace JotaSystem.Sdk.Common.Enums
         Purchase = 1,
         [Display(Name = "Venda")]
         Sale = 2,
-        [Display(Name = "Devolução de Entrada")]
-        ReturnIn = 3,
-        [Display(Name = "Devolução de Saída")]
-        ReturnOut = 4,
-        [Display(Name = "Transferência de Entrada")]
-        TransferIn = 5,
-        [Display(Name = "Transferência de Saída")]
-        TransferOut = 6,
+        [Display(Name = "Devolução")]
+        Return = 3,
+        [Display(Name = "Transferência")]
+        Transfer = 4,
         [Display(Name = "Ajuste")]
-        Adjustment = 7,
-        [Display(Name = "Reserva Consumida")]
-        ReservationConsumed = 8
+        Adjustment = 5,
+        [Display(Name = "Reserva")]
+        Reservation = 6
     }
 }
