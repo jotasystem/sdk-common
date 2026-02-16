@@ -2,7 +2,7 @@
 
 namespace JotaSystem.Sdk.Common.Enums
 {
-    public enum InventoryMovementReason
+    public enum StockReasonEnum
     {
         [Display(Name = "Compra")]
         Purchase = 1,
