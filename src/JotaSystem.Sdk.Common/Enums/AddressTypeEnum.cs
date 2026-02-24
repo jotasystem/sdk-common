@@ -4,22 +4,15 @@ namespace JotaSystem.Sdk.Common.Enums
 {
     public enum AddressTypeEnum
     {
-        [Display(Name = "Cobrança")]
-        Billing = 1,
-
-        [Display(Name = "Entrega")]
-        Shipping = 2,
-
-        [Display(Name = "Cobrança e Entrega")]
-        BillingAndShipping = 3,
-
         [Display(Name = "Residencial")]
-        Residential = 4,
-
+        Home = 1,
         [Display(Name = "Comercial")]
-        Commercial = 5,
-
+        Business = 2,
+        [Display(Name = "Entrega")]
+        Shipping = 3,
+        [Display(Name = "Cobrança")]
+        Billing = 4,
         [Display(Name = "Outro")]
-        Other = 6
+        Other = 5
     }
 }

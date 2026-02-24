@@ -4,11 +4,9 @@ namespace JotaSystem.Sdk.Common.Enums
 {
     public enum PersonTypeEnum
     {
-        [Display(Name = "Pessoa Física")]
+        [Display(Name = "Indivíduo - PF")]
         Individual = 1,
-        [Display(Name = "Pessoa Jurídica")]
-        LegalEntity = 2,
-        [Display(Name = "Pessoa Estrangeira")]
-        Foreigner = 3
+        [Display(Name = "Organização - PJ")]
+        Organization = 2
     }
 }
