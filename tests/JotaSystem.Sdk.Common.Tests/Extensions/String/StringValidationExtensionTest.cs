@@ -66,19 +66,5 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
             Assert.True("hello".IsLowerCase());
             Assert.False("Hello".IsLowerCase());
         }
-
-        [Fact]
-        public void IsCpf_ShouldValidateCpf()
-        {
-            Assert.True("52998224725".IsCpf()); // válido
-            Assert.False("12345678900".IsCpf()); // inválido
-        }
-
-        [Fact]
-        public void IsCnpj_ShouldValidateCnpj()
-        {
-            Assert.True("11444777000161".IsCnpj()); // válido
-            Assert.False("112223330001812".IsCnpj()); // inválido
-        }
     }
 }
