@@ -21,6 +21,22 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
         }
 
         [Fact]
+        public void Normalize_ShouldPhone()
+        {
+            var input = "+55 (17) 99619-7403";
+            var result = input.NormalizeSpecialCharacter();
+            Assert.Equal("5517996197403", result);
+        }
+
+        [Fact]
+        public void Normalize_ShouldDocument()
+        {
+            var input = "390.234.738-41";
+            var result = input.NormalizeSpecialCharacter();
+            Assert.Equal("39023473841", result);
+        }
+
+        [Fact]
         public void NormalizeWhitespace_ShouldReplaceMultipleSpacesWithSingle()
         {
             var input = "Hello     World   Test";

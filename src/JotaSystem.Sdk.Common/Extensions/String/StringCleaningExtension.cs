@@ -35,6 +35,19 @@ namespace JotaSystem.Sdk.Common.Extensions.String
         }
 
         /// <summary>
+        /// Normalize removendo tudo que não for letra/número e uppercase.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string NormalizeSpecialCharacter(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+
+            return new string([.. value.Where(char.IsLetterOrDigit)]).ToUpperInvariant();
+        }
+
+        /// <summary>
         /// Remove espaços em branco extras e substitui múltiplos espaços por um único.
         /// </summary>
         /// <param name="value">Texto com possíveis espaços em excesso.</param>
