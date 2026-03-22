@@ -4,13 +4,11 @@ namespace JotaSystem.Sdk.Common.Enums
 {
     public enum BusinessModelEnum
     {
-        [Display(Name = "Matriz")]
-        Parent = 1,
-        [Display(Name = "Filial")]
-        Branch = 2,
+        [Display(Name = "Próprio")]
+        Own = 1,
         [Display(Name = "Franquia")]
-        Franchise = 3,
+        Franchise = 2,
         [Display(Name = "Rede")]
-        Network = 4
+        Network = 3
     }
 }
