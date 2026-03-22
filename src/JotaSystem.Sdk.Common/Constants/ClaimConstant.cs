@@ -14,6 +14,7 @@
         public const string FullAccess = "full_access";
 
         public const string TenantId = "tenant_id";
+        public const string CurrentCompanyType = "current_company_type";
         public const string CurrentCompanyId = "current_company_id";
         public const string AllowedCompaniesId = "allowed_companies_id";
         public const string Culture = "culture";
