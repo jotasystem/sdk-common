@@ -1,17 +1,19 @@
 # JotaSystem.Sdk.Common
 
-Pacote base da **Jota System** contendo funções utilitárias, Value Objects e componentes reutilizáveis para aplicações .NET.
+Biblioteca de utilidades compartilhadas da **Jota System** para aplicações .NET.
 
----
+## Descrição
 
-## 📦 Descrição
+O `JotaSystem.Sdk.Common` concentra recursos reutilizáveis de baixo nível que podem ser consumidos por outros SDKs e aplicações da empresa.
 
-O **JotaSystem.Sdk.Common** centraliza implementações e utilitários genéricos utilizados em diversos projetos da Jota System, promovendo reuso de código e padronização em recursos comuns das aplicações.
+Hoje o pacote contém principalmente:
 
-Inclui:
-- **Helpers e Extensions** de uso geral.
-- **Value Objects** genéricos e reutilizáveis.
-- **Middlewares padrão** para tratamento de exceções e logs.   
-- **Serviços e utilitários comuns**.
+- `Constants` com padrões de datas, regex, claims, máscaras e códigos de status.
+- `Enums` de uso transversal, como status, tipos de pessoa, escopo de acesso, tipo de empresa, perfil de usuário, estoque, pedidos, produtos e documentos.
+- `Extensions` para tipos comuns, incluindo `string`, `DateTime`, `bool`, `object`, `collection`, `task`, `http` e `json`.
+- `Helpers` para operações práticas, como CSV, validação e formatação de CPF/CNPJ, senha, privacidade, arquivos, e-mail, JSON e URL.
+- `Models` simples de apoio, como mensagens de chat.
 
----
+## Perfil do pacote
+
+Este SDK é a base utilitária do ecossistema Jota System. Ele não define regras de domínio nem integrações externas; o foco é reuso de código e padronização técnica.
