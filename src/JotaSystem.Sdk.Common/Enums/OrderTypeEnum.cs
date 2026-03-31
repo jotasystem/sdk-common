@@ -5,10 +5,10 @@ namespace JotaSystem.Sdk.Common.Enums
     public enum OrderTypeEnum
     {
         [Display(Name = "Orçamento")]
-        Estimate = 1,
+        Estimate = 0,
         [Display(Name = "Pedido de Venda")]
-        SalesOrder = 2,
+        SalesOrder = 1,
         [Display(Name = "Serviço de Venda")]
-        SalesService = 3
+        SalesService = 2
     }
 }

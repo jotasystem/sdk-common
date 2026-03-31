@@ -10,19 +10,22 @@ namespace JotaSystem.Sdk.Common.Enums
         [Display(Name = "Aberto")]
         Open = 1,
 
+        [Display(Name = "Pendente")]
+        Pending = 2,
+
         [Display(Name = "Confirmado")]
-        Confirmed = 2,
+        Confirmed = 3,
 
         [Display(Name = "Em Processamento")]
-        Processing = 3,
+        InProgress = 4,
 
         [Display(Name = "Concluído")]
-        Completed = 4,
+        Completed = 5,
 
         [Display(Name = "Cancelado")]
-        Canceled = 5,
+        Cancelled = 6,
 
         [Display(Name = "Expirado")]
-        Expired = 6
+        Expired = 7
     }
 }
