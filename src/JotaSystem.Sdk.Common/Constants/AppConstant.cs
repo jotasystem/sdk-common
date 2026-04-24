@@ -40,5 +40,11 @@
         // 🔹 Outros valores comuns
         public const string DefaultTimeZone = "America/Sao_Paulo";
         public const string DefaultCurrency = "BRL";
+
+        // 🔹 Caracteres para geração de códigos
+        public const string LettersSafe = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+        public const string LettersFull = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public const string NumbersSafe = "23456789";
+        public const string NumbersFull = "0123456789";
     }
 }
