@@ -3,7 +3,7 @@
     public static class ValidationConstant
     {
         // 🔹 Comprimentos de campos de texto
-        public const int MaxNameLength = 50;
+        public const int MaxNameLength = 100;
         public const int MinNameLength = 2;
 
         public const int MaxEmailLength = 100;
