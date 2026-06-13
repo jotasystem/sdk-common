@@ -2,7 +2,7 @@
 
 namespace JotaSystem.Sdk.Common.Enums
 {
-    public enum CategoryTypeEnum
+    public enum ItemTypeEnum
     {
         [Display(Name = "Produto")]
         Product = 1,
