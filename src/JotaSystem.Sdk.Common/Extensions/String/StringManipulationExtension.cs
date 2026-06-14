@@ -50,6 +50,24 @@ namespace JotaSystem.Sdk.Common.Extensions.String
         }
 
         /// <summary>
+        /// Retorna as iniciais da primeira e da última palavra da string.
+        /// </summary>
+        public static string ToInitials(this string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return "?";
+
+            var parts = value.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            return parts.Length switch
+            {
+                0 => "?",
+                1 => parts[0][..1].ToUpperInvariant(),
+                _ => $"{parts[0][0]}{parts[^1][0]}".ToUpperInvariant()
+            };
+        }
+
+        /// <summary>
         /// Remove todos os números da string.
         /// </summary>
         public static string RemoveNumbers(this string value)

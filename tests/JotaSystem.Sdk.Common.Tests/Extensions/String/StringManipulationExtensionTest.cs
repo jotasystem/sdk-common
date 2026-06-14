@@ -24,6 +24,18 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
             Assert.Equal("rld", "World".Right(3));
         }
 
+        [Theory]
+        [InlineData(null, "?")]
+        [InlineData("", "?")]
+        [InlineData("   ", "?")]
+        [InlineData("joão", "J")]
+        [InlineData("joão silva", "JS")]
+        [InlineData("  joão   da silva  ", "JS")]
+        public void ToInitials_ShouldReturnExpectedInitials(string? value, string expected)
+        {
+            Assert.Equal(expected, value!.ToInitials());
+        }
+
         [Fact]
         public void RemoveNumbers_ShouldRemoveAllDigits()
         {
