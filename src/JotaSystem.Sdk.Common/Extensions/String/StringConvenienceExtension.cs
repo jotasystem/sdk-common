@@ -23,6 +23,18 @@
         }
 
         /// <summary>
+        /// Normaliza um valor para exibição ou retorna o fallback quando não informado.
+        /// </summary>
+        public static string ToDisplayValue(this string? value, string fallback = "Não informado")
+        {
+            var normalized = value?.Trim();
+
+            return string.IsNullOrWhiteSpace(normalized) || normalized.All(character => character == '/')
+                ? fallback
+                : normalized;
+        }
+
+        /// <summary>
         /// Trunca a string e adiciona "..." se ultrapassar o tamanho máximo especificado.
         /// </summary>
         public static string TruncateWithEllipsis(this string value, int maxLength)

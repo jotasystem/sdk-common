@@ -20,6 +20,25 @@ namespace JotaSystem.Sdk.Common.Tests.Extensions.String
             Assert.Equal("value", "value".DefaultIfNullOrWhiteSpace("default"));
         }
 
+        [Theory]
+        [InlineData(null, "Não informado")]
+        [InlineData("", "Não informado")]
+        [InlineData("   ", "Não informado")]
+        [InlineData("/", "Não informado")]
+        [InlineData(" // ", "Não informado")]
+        [InlineData(" valor ", "valor")]
+        [InlineData(" / valor / ", "/ valor /")]
+        public void ToDisplayValue_ShouldReturnNormalizedValueOrFallback(string? value, string expected)
+        {
+            Assert.Equal(expected, value.ToDisplayValue());
+        }
+
+        [Fact]
+        public void ToDisplayValue_ShouldReturnCustomFallback()
+        {
+            Assert.Equal("-", ((string?)null).ToDisplayValue("-"));
+        }
+
         [Fact]
         public void TruncateWithEllipsis_ShouldTruncateStringCorrectly()
         {
