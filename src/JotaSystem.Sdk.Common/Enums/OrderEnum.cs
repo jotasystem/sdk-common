@@ -7,8 +7,8 @@ namespace JotaSystem.Sdk.Common.Enums
         [Display(Name = "Orçamento")]
         Estimate = 1,
 
-        [Display(Name = "Pedido")]
-        Order = 2
+        [Display(Name = "Pedido de Venda")]
+        SalesOrder = 2
     }
 
     public enum OrderStatusEnum
