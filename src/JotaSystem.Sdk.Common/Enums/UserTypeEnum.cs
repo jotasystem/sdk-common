@@ -4,6 +4,8 @@ namespace JotaSystem.Sdk.Common.Enums
 {
     public enum UserTypeEnum
     {
+        [Display(Name = "Super Administrador")]
+        SuperAdmin = 0,
         [Display(Name = "Administrador")]
         Admin = 1,
         [Display(Name = "Colaborador")]
